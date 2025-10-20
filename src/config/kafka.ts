@@ -54,6 +54,7 @@ export class KafkaBroker implements MessageBroker {
         message,
       }: EachMessagePayload) => {
         // Logic to handle incoming messages.
+
         switch (topic) {
           case "order":
             {
@@ -63,6 +64,11 @@ export class KafkaBroker implements MessageBroker {
             }
             break;
           default:
+            console.log({
+              value: message.value.toString(),
+              topic,
+              partition,
+            });
             console.log("Doing nothing...");
         }
       },
